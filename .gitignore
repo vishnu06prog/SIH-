@@ -25,3 +25,6 @@ backend/.env
 .idea/
 .vscode/
 frontend/tsconfig.tsbuildinfo
+
+# Local virtualenv created by start.sh / setup
+.venv/

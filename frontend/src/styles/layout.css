@@ -13,7 +13,9 @@
   flex-direction: column;
   gap: 6px;
   padding: 20px 14px;
-  background: linear-gradient(178deg, var(--ink-900) 0%, #0d2731 62%, #0a2028 100%);
+  /* Literal colours: the rail is always dark, so it must not follow the ink
+     scale, which inverts in the dark theme. */
+  background: linear-gradient(178deg, #0b1b22 0%, #0d2731 62%, #0a2028 100%);
   color: #dbe8ec;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
 }

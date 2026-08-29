@@ -1,0 +1,150 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* ------------------------------------------------------------ sidebar */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 14px;
+  /* Literal colours: the rail is always dark, so it must not follow the ink
+     scale, which inverts in the dark theme. */
+  background: linear-gradient(178deg, #0b1b22 0%, #0d2731 62%, #0a2028 100%);
+  color: #dbe8ec;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 4px 8px 18px;
+}
+.brand-mark {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 11px;
+  background: linear-gradient(140deg, var(--brand-400), var(--brand-700));
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  flex: none;
+}
+.brand-text { display: flex; flex-direction: column; min-width: 0; }
+.brand-title {
+  font-weight: 640; font-size: 0.9375rem; color: #fff; letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.brand-sub {
+  font-size: 0.6875rem; color: #7e9aa4; letter-spacing: 0.07em; text-transform: uppercase;
+}
+
+/* the nav doubles as a metro line: a rail with a station dot per stop */
+.nav {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 16px;
+}
+.nav::before {
+  content: "";
+  position: absolute;
+  left: 21px; top: 16px; bottom: 16px;
+  width: 2px;
+  background: linear-gradient(var(--brand-400), rgba(41, 166, 161, 0.15));
+  border-radius: 2px;
+}
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px 9px 22px;
+  border-radius: var(--radius);
+  color: #b6c9d1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav-link:hover { background: rgba(255, 255, 255, 0.06); color: #fff; text-decoration: none; }
+.nav-link::before {
+  content: "";
+  position: absolute;
+  left: 1px; top: 50%;
+  width: 9px; height: 9px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: #0d2731;
+  border: 2px solid var(--brand-400);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.nav-link.active { background: rgba(41, 166, 161, 0.16); color: #fff; }
+.nav-link.active::before { background: var(--brand-400); transform: scale(1.15); }
+.nav-icon { flex: none; opacity: 0.9; }
+
+.sidebar-footer { margin-top: auto; padding: 12px 10px 2px; }
+.engine-card {
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 11px 12px;
+  font-size: 0.75rem;
+  color: #9fb6bf;
+}
+.engine-card strong { display: block; color: #e6f0f3; font-weight: 600; margin-bottom: 3px; }
+.engine-row { display: flex; align-items: center; gap: 7px; margin-top: 6px; }
+
+/* ------------------------------------------------------------- topbar */
+.main { display: flex; flex-direction: column; min-width: 0; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 26px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-title { display: flex; flex-direction: column; min-width: 0; }
+.topbar-title h1 { font-size: 1.0625rem; font-weight: 640; }
+.topbar-title span { font-size: 0.75rem; color: var(--text-muted); }
+.topbar-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 24px 26px 64px;
+}
+
+@media (max-width: 1000px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static; height: auto; flex-direction: row; align-items: center;
+    gap: 14px; padding: 10px 14px; overflow-x: auto;
+  }
+  .brand { padding: 0 8px 0 0; }
+  .brand-text { display: none; }
+  .nav { flex-direction: row; padding-left: 0; }
+  .nav::before { display: none; }
+  .nav-link { padding: 8px 12px; white-space: nowrap; }
+  .nav-link::before { display: none; }
+  .sidebar-footer { display: none; }
+  .page { padding: 18px 16px 48px; }
+  .topbar { padding: 0 16px; }
+}

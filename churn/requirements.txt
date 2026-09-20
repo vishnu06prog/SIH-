@@ -1,0 +1,8 @@
+matplotlib==3.11.2
+numpy==2.4.6
+pandas==3.0.6
+scikit-learn==1.9.1
+seaborn==0.13.2
+xgboost==3.2.0
+# installed on Day 4 only (large download); pin here so the env is reproducible
+tensorflow-cpu==2.18.0

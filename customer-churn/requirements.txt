@@ -1,0 +1,9 @@
+# Tested with Python 3.11
+tensorflow>=2.16
+scikit-learn>=1.4
+pandas>=2.0
+numpy>=1.26
+seaborn>=0.13
+matplotlib>=3.8
+joblib>=1.3        # installed with scikit-learn; used to save the preprocessor
+notebook>=7.0      # only needed to open notebooks/churn_eda.ipynb
